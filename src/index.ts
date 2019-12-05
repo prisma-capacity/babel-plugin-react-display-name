@@ -44,7 +44,7 @@ export default function({ types: t }: typeof babel): PluginObj {
             t.assignmentExpression(
               '=',
               t.memberExpression(
-                t.identifier('Hello'),
+                t.identifier(path.node.id.name),
                 t.identifier('displayName')
               ),
               t.stringLiteral(path.node.id.name)

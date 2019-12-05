@@ -11,54 +11,54 @@ function run(source: string) {
 
 test('handle "FC" type reference', () => {
   const source = `
-const Hello: FC = () => null;
+const Hello1: FC = () => null;
 `;
 
   expect(run(source)).toMatchInlineSnapshot(`
     "\\"use strict\\";
 
-    const Hello = () => null;
+    const Hello1 = () => null;
 
-    Hello.displayName = \\"Hello\\";"
+    Hello1.displayName = \\"Hello1\\";"
   `);
 });
 
 test('handle "FunctionComponent" type reference', () => {
   const source = `
-const Hello: FunctionComponent = () => null;
+const Hello2: FunctionComponent = () => null;
 `;
 
   expect(run(source)).toMatchInlineSnapshot(`
     "\\"use strict\\";
 
-    const Hello = () => null;
+    const Hello2 = () => null;
 
-    Hello.displayName = \\"Hello\\";"
+    Hello2.displayName = \\"Hello2\\";"
   `);
 });
 
 test('handle "forwardRef" usage', () => {
   const source = `
-const Hello = forwardRef(() => null);
+const Hello3 = forwardRef(() => null);
 `;
 
   expect(run(source)).toMatchInlineSnapshot(`
     "\\"use strict\\";
 
-    const Hello = forwardRef(() => null);
-    Hello.displayName = \\"Hello\\";"
+    const Hello3 = forwardRef(() => null);
+    Hello3.displayName = \\"Hello3\\";"
   `);
 });
 
 test('handle "memo" usage', () => {
   const source = `
-const Hello = memo(() => null);
+const Hello4 = memo(() => null);
 `;
 
   expect(run(source)).toMatchInlineSnapshot(`
     "\\"use strict\\";
 
-    const Hello = memo(() => null);
-    Hello.displayName = \\"Hello\\";"
+    const Hello4 = memo(() => null);
+    Hello4.displayName = \\"Hello4\\";"
   `);
 });
