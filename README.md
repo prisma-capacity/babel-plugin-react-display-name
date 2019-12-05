@@ -1,3 +1,5 @@
+![](https://github.com/prisma-capacity/babel-plugin-react-display-named/workflows/CI/badge.svg)
+
 # `@prisma-capacity/babel-plugin-react-display-name`
 
 > Automatically add a `displayName` property to your React components.
