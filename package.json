@@ -1,0 +1,31 @@
+{
+  "name": "@prisma-capacity/babel-plugin-react-display-name",
+  "version": "1.0.0",
+  "description": "Automatically add displayName properties to your React project.",
+  "main": "dist/index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prisma-capacity/babel-plugin-react-display-name"
+  },
+  "scripts": {
+    "build": "babel src --extensions .ts --out-dir dist --delete-dir-on-start",
+    "test": "jest",
+    "lint": "tsc -p src && tsc -p tests && prettier --loglevel warn --write \"**/*.{ts,tsx,js,json,md}\""
+  },
+  "keywords": [
+    "babel-plugin",
+    "react"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^10.0.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.3"
+  }
+}
