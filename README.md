@@ -1,4 +1,4 @@
-![](https://github.com/prisma-capacity/babel-plugin-react-display-named/workflows/CI/badge.svg)
+![](https://github.com/prisma-capacity/babel-plugin-react-display-named/workflows/.github/workflows/ci.yml/badge.svg)
 
 # `@prisma-capacity/babel-plugin-react-display-name`
 
