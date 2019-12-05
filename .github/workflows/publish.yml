@@ -1,0 +1,33 @@
+name: Publish
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12', '10']
+    name: Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn
+      - run: yarn lint
+      - run: yarn build
+      - run: yarn test
+
+      publish-npm:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v1
+          - uses: actions/setup-node@v1
+            with:
+              node-version: 12
+              registry-url: https://registry.npmjs.org/
+          - run: npm ci
+          - run: npm publish
+            env:
+              NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
