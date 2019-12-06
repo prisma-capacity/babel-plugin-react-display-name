@@ -23,6 +23,26 @@ const Hello1: FC = () => null;
   `);
 });
 
+test('handle some type reference with export', () => {
+  const source = `
+export const Hello1: FC = () => null;
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    Object.defineProperty(exports, \\"__esModule\\", {
+      value: true
+    });
+    exports.Hello1 = void 0;
+
+    const Hello1 = () => null;
+
+    exports.Hello1 = Hello1;
+    Hello1.displayName = \\"Hello1\\";"
+  `);
+});
+
 test('handle "FunctionComponent" type reference', () => {
   const source = `
 const Hello2: FunctionComponent = () => null;
@@ -46,6 +66,24 @@ const Hello3 = forwardRef(() => null);
     "\\"use strict\\";
 
     const Hello3 = forwardRef(() => null);
+    Hello3.displayName = \\"Hello3\\";"
+  `);
+});
+
+test('handle "forwardRef" usage with export', () => {
+  const source = `
+export const Hello3 = forwardRef(() => null);
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    Object.defineProperty(exports, \\"__esModule\\", {
+      value: true
+    });
+    exports.Hello3 = void 0;
+    const Hello3 = forwardRef(() => null);
+    exports.Hello3 = Hello3;
     Hello3.displayName = \\"Hello3\\";"
   `);
 });
