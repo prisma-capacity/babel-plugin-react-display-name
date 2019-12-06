@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node: ['12', '10']
-    name: Node ${{ matrix.node }}
+    name: Build and Test (Node ${{ matrix.node }})
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -17,19 +17,26 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: yarn
       - run: yarn lint
-      - run: yarn build
       - run: yarn test
+      - run: yarn build
+      - uses: actions/upload-artifact@v1
+        if: matrix.node == '12'
+        with:
+          name: build-artifact
+          path: dist/
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    name: Publishing ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: build-artifact
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
