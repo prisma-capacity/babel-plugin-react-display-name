@@ -24,7 +24,7 @@ yarn add @prisma-capacity/babel-plugin-react-display-name --dev
 
 Because React components can be simple functions it can be hard to detect, if a certain function is a component or not. Currently we cover the following cases:
 
-Explicitly type your component:
+Explicitly type your component with TypeScript:
 
 ```ts
 const Hello: FC = () => null;
