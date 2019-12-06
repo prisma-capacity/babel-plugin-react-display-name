@@ -100,3 +100,20 @@ const Hello4 = memo(() => null);
     Hello4.displayName = \\"Hello4\\";"
   `);
 });
+
+test('handle multiple rewrites', () => {
+  const source = `
+const Hello2: FC = () => null;
+const Hello4 = memo(() => null);
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    const Hello2 = () => null;
+
+    Hello2.displayName = \\"Hello2\\";
+    const Hello4 = memo(() => null);
+    Hello4.displayName = \\"Hello4\\";"
+  `);
+});
