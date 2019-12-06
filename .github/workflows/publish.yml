@@ -33,6 +33,7 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: build-artifact
+          path: dist/
       - uses: actions/setup-node@v1
         with:
           node-version: 12
