@@ -1,3 +1,7 @@
+<div align="right"><a target="myNextJob" href="https://www.prisma-capacity.eu/careers#job-offers">
+    <img class="inline" src="prisma.png">
+</a></div>
+
 ![](https://github.com/prisma-capacity/babel-plugin-react-display-name/workflows/CI/badge.svg)
 
 # `@prisma-capacity/babel-plugin-react-display-name`
