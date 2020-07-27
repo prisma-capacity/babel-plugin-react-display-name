@@ -57,6 +57,29 @@ const Hello2: FunctionComponent = () => null;
   `);
 });
 
+test('handle manually inserted displayNames -- manual one should win!', () => {
+  const source = `
+const Hello1: FC = () => null;
+Hello1.displayName = "Already Have a DisplayName1";
+const Hello2: FunctionComponent = () => null;
+Hello2.displayName = "Already Have a DisplayName2";
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    const Hello1 = () => null;
+
+    Hello1.displayName = \\"Hello1\\";
+    Hello1.displayName = \\"Already Have a DisplayName1\\";
+
+    const Hello2 = () => null;
+
+    Hello2.displayName = \\"Hello2\\";
+    Hello2.displayName = \\"Already Have a DisplayName2\\";"
+  `);
+});
+
 test('handle "forwardRef" usage', () => {
   const source = `
 const Hello3 = forwardRef(() => null);
