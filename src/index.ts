@@ -6,7 +6,11 @@ function isFunctionComponent(t: typeof types, node: types.Identifier) {
     t.isTSTypeReference(node.typeAnnotation.typeAnnotation) &&
     t.isIdentifier(node.typeAnnotation.typeAnnotation.typeName) &&
     (node.typeAnnotation.typeAnnotation.typeName.name === 'FC' ||
-      node.typeAnnotation.typeAnnotation.typeName.name === 'FunctionComponent')
+      node.typeAnnotation.typeAnnotation.typeName.name ===
+        'FunctionComponent' ||
+      node.typeAnnotation.typeAnnotation.typeName.name === 'VFC' ||
+      node.typeAnnotation.typeAnnotation.typeName.name ===
+        'VoidFunctionComponent')
   );
 }
 

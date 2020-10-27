@@ -33,6 +33,8 @@ Explicitly type your component with TypeScript:
 ```ts
 const Hello: FC = () => null;
 const Hello: FunctionalComponent = () => null;
+const Hello: VFC = () => null;
+const Hello: VoidFunctionalComponent = () => null;
 ```
 
 Use a function which is known to return a component:

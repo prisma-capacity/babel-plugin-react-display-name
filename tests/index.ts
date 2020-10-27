@@ -23,6 +23,20 @@ const Hello1: FC = () => null;
   `);
 });
 
+test('handle "VFC" type reference', () => {
+  const source = `
+const Hello1: VFC = () => null;
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    const Hello1 = () => null;
+
+    Hello1.displayName = \\"Hello1\\";"
+  `);
+});
+
 test('handle some type reference with export', () => {
   const source = `
 export const Hello1: FC = () => null;
@@ -46,6 +60,20 @@ export const Hello1: FC = () => null;
 test('handle "FunctionComponent" type reference', () => {
   const source = `
 const Hello2: FunctionComponent = () => null;
+`;
+
+  expect(run(source)).toMatchInlineSnapshot(`
+    "\\"use strict\\";
+
+    const Hello2 = () => null;
+
+    Hello2.displayName = \\"Hello2\\";"
+  `);
+});
+
+test('handle "VoidFunctionComponent" type reference', () => {
+  const source = `
+const Hello2: VoidFunctionComponent = () => null;
 `;
 
   expect(run(source)).toMatchInlineSnapshot(`
